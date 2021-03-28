@@ -2,10 +2,13 @@ const express = require("express");
 const router = express.Router();
 const isValidUrl = require("../middleware/isValidUrl");
 const extractTitleAndMeta = require("../middleware/extractTitleAndMeta");
-const { htmlExtract } = require("../controller/urlController");
+const { htmlExtract, getScrapedUrl } = require("../controller/urlController");
 
-// Root path of /api/v1/extract
-// Uses isValidUrl and extractTitleAndMeta Middleware:
-router.route("/").post(isValidUrl, extractTitleAndMeta, htmlExtract);
+// Root path of /api/v1/scrapeHtml
+
+router
+  .route("/")
+  .post(isValidUrl, extractTitleAndMeta, htmlExtract)
+  .get(getScrapedUrl);
 
 module.exports = router;

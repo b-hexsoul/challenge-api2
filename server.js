@@ -18,7 +18,7 @@ app.use(express.static(join(__dirname, "public")));
 // Routers
 const apiRoutes = require("./routes/apiRoutes");
 
-app.use("/api/v1/htmlExtract", apiRoutes);
+app.use("/api/v1/scrapeHtml", apiRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server runnning on port ${PORT}`);
