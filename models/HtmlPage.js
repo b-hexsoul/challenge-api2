@@ -8,7 +8,7 @@ const HtmlPageSchema = new Schema(
       type: String,
       validate: {
         validator: (url) => HtmlPage.doesNotExist({ url }),
-        message: "Shorten URL already exists",
+        message: "URL already exists",
       },
     },
     html: {
