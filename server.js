@@ -15,9 +15,10 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(express.static(join(__dirname, "public")));
 
-app.get("/", async (req, res, next) => {
-  const { data } = axios.get("https://www.example.com/");
-});
+// Routers
+const apiRoutes = require("./routes/apiRoutes");
+
+app.use("/api/v1/htmlExtract", apiRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server runnning on port ${PORT}`);
