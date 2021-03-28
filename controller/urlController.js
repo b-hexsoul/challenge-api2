@@ -6,11 +6,11 @@ const HtmlPage = require("../models/HtmlPage");
 exports.htmlExtract = async (req, res, next) => {
   // Check if URL exists, if it does then increases the count and will return data.
   const entry = await HtmlPage.findOne({ url: req.body.url });
-  console.log("entry", entry);
+
   if (!entry) {
     req.new = true;
     let newDoc = await HtmlPage.create({ url: req.body.url });
-    console.log("newDoc", newDoc);
+
     let { _id: id, url, createdAt } = newDoc;
     res.status(200).json({ id, url, createdAt });
   }
